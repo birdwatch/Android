@@ -1,10 +1,8 @@
-# day4
-
 - お願い
 
 補講の日程決めと生存確認を兼ねてメールの返信をお願いします。
 
-1. ListView
+# ListView
 
 データの一覧を表示したい時、ListViewを使うと簡単に表示することができます。
 
@@ -24,4 +22,4 @@ Adapterの例を紹介します。
 　　ArrayAdapter・CursorAdapter・SimpleAdapterのスーパークラス。
 　　独自のAdapterクラスを定義して、レイアウトを自由にカスタマイズする時に使う
 
-2. ImageView
+# ImageView
