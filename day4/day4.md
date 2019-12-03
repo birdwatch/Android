@@ -21,6 +21,42 @@ Adapterの例を紹介します。
 
 - BaseAdapter
 　　ArrayAdapter・CursorAdapter・SimpleAdapterのスーパークラス。  
-    独自のAdapterクラスを定義して、レイアウトを自由にカスタマイズする時に使う
+    　　独自のAdapterクラスを定義して、レイアウトを自由にカスタマイズする時に使う
+
+
+今回は一番簡単なArrayAdapterを使います。
+
+### Code
+
+以下のように書きます。
+
+```main.java(一部)
+ListView listView;
+
+    private static final String[] charas = {
+            "花", "乃愛", "ひなた"
+    };
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        listView = (ListView) findViewById(R.id.listview);
+
+        // ArrayAdapterのオブジェクト生成、↑のcharasの内容をセット
+        // support_simple_spinner_dropdown_itemはAndroid Studioにもともと用意されてるレイアウトファイル
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item ,charas);
+
+        // Adapterの内容をListViewにセット
+        listView.setAdapter(arrayAdapter);
+
+    }
+```
+
+#### 結果
+
+![material/listview_result.png]
+タイトル無しの画像を埋め込む
 
 # ImageView
