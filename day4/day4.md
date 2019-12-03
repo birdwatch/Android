@@ -1,4 +1,4 @@
-- お願い
+### お願い
 
 補講の日程決めと生存確認を兼ねてメールの返信をお願いします。
 
@@ -6,7 +6,7 @@
 
 データの一覧を表示したい時、ListViewを使うと簡単に表示することができます。
 
-### Adapter
+## Adapter
 
 このListViewを扱うために、Adapterというものを使用します。  
 Adapterとは、データを画面上に表示するための橋渡しのようなものです。
@@ -21,12 +21,12 @@ Adapterの例を紹介します。
 
 - BaseAdapter
 　　ArrayAdapter・CursorAdapter・SimpleAdapterのスーパークラス。  
-    　　独自のAdapterクラスを定義して、レイアウトを自由にカスタマイズする時に使う
+    　　独自のListViewを作りたいとき（例えば画像と文字が一つの枠の中にあるやつ）はこれを使います（ムズイ）
 
 
 今回は一番簡単なArrayAdapterを使います。
 
-### Code
+## Code
 
 以下のように書きます。
 
@@ -54,9 +54,21 @@ ListView listView;
     }
 ```
 
-#### 結果
+xml側はこんな感じです。
 
-![material/listview_result.png]
-タイトル無しの画像を埋め込む
+<img src = "https://i.imgur.com/T4OE3RR.png">
+
+## 結果
+
+<img src="https://i.imgur.com/TcL2E5r.png">
+
+## 課題
+
+1. 考え中
 
 # ImageView
+
+画像も簡単に表示することができます。
+
+## 課題
+1. おみくじアプリを作ってください
