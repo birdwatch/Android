@@ -8,7 +8,7 @@
 
 ### Adapter
 
-このListViewを扱うために、Adapterというものを使用します。
+このListViewを扱うために、Adapterというものを使用します。  
 Adapterとは、データを画面上に表示するための橋渡しのようなものです。
 
 Adapterの例を紹介します。
@@ -20,6 +20,7 @@ Adapterの例を紹介します。
 　　XMLファイルで定義されたビューを表示する時に使う
 
 - BaseAdapter
-　　ArrayAdapter・CursorAdapter・SimpleAdapterのスーパークラス。  独自のAdapterクラスを定義して、レイアウトを自由にカスタマイズする時に使う
+　　ArrayAdapter・CursorAdapter・SimpleAdapterのスーパークラス。  
+    独自のAdapterクラスを定義して、レイアウトを自由にカスタマイズする時に使う
 
 # ImageView
