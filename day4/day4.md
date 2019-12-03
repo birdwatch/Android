@@ -4,6 +4,60 @@
 
 # XML（レイアウト）について
 
+## WidgetsとLayoutについて
+
+Androidには**Widgets**と**Layout**があります。  
+Layoutが「枠」で、Widgetsは枠の中の「部品」のようなものです。
+
+ここまで紹介してきたのはWidgetsです。  
+Layoutは教える時間があまりないのでここで紹介するにとどめておきます。
+
+時間があるときにいじって遊んでみてください。
+
+## ID
+
+今までコードでwidgetsをコードで操作する時にidというものを使ってきたと思います。  
+これはlayoutやwidgetsを識別するためのものです。  
+Design側の右上のID欄もしくはText側で
+
+`android:id="@+id/【つけたいid(名前)】`
+
+と書くことで指定できます。
+
+## Layout
+
+Layoutの種類を簡単に紹介します。
+
+- RelativeLayout  
+中の要素の位置関係を相対的に決めるlayout
+- LinearLayout  
+縦か横1列に要素を整列させるlayout
+- FrameLayout  
+要素を重ねて表示することのできるlayout
+- ConstraintLayout  
+要素に制約を持たせて位置を決めることのできるlayout
+
+恐らく今まで触ってきたのはConstraintLayoutだと思います。
+これらをまとめて**view**といいます。
+
+Layoutは自分でいじってみるのが一番早いと思うので色々試してみてください。
+
+## Layoutのプロパティ
+
+- width/height  
+それぞれ幅・高さを表します。  
+各viewの大きさを決めることができます。
+- match_parent  
+親のViewに対していっぱいに、幅・高さを調節することができるプロパティです。 
+- wrap_content  
+Viewの内容の大きさに合わせて、幅・高さを調節することができるプロパティです。
+- dp  
+大きさを数字で絶対的に決める時に用いる単位です。Androidの端末には色々な画面サイズがあるので、色々な画面サイズに対応させるためには、相対的に大きさを決めたほうが好ましいです。
+
+## 課題
+
+LinearLayoutを使ってButtonを整列させてみてください。
+
 # ListView
 
 データの一覧を表示したい時、ListViewを使うと簡単に表示することができます。
@@ -15,15 +69,15 @@ Adapterとは、データを画面上に表示するための橋渡しのよう�
 
 Adapterの例を紹介します。
 
-- ArrayAdapter
-　　配列やListを1行に1つ表示する時に使う
+- ArrayAdapter  
+配列やListを1行に1つ表示する時に使う
 
-- SimpleAdapter
-　　XMLファイルで定義されたビューを表示する時に使う
+- SimpleAdapter  
+XMLファイルで定義されたビューを表示する時に使う
 
-- BaseAdapter
-　　ArrayAdapter・CursorAdapter・SimpleAdapterのスーパークラス。  
-    　　独自のListViewを作りたいとき（例えば画像と文字が一つの枠の中にあるやつ）はこれを使います（ムズイ）
+- BaseAdapter  
+ArrayAdapter・CursorAdapter・SimpleAdapterのスーパークラス。  
+独自のListViewを作りたいとき（例えば画像と文字が一つの枠の中にあるやつ）はこれを使います（ムズイ）
 
 
 今回は一番簡単なArrayAdapterを使います。
