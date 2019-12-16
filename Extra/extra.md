@@ -1,3 +1,18 @@
+## 解説し忘れた用語解説
+```java
+    public class A()){
+        // ここに書く変数は「フィールド」
+        int a;
+
+        // コンストラクタ
+        // クラス名と同名でなければならない
+        void A(){
+            // メソッド内に書く変数は「ローカル変数」
+            int _a;
+        }
+    }
+```
+
 # class
 色々解説するにはまず、classについてから話始めなければいけません。
 
@@ -151,6 +166,8 @@ public class MainActivity extends AppCompatActivity {
 
 また、継承の原則として、**サブクラスになればなるほど具体的に、スーパークラスであればあるほど抽象的になるように記述するようにしましょう。**
 
+見たいclassにカーソルを当ててCtrl+Bを押すことでそのclassの実装を見ることができます。遡ってみたりして、あそんでみてください。
+
 ## 継承とオーバーライドの禁止
 **final修飾子**は、それ自体が最後であることを示します。
 
@@ -174,18 +191,59 @@ public class MainActivity extends AppCompatActivity {
 （すみませんがインターフェイスについての解説を書く暇がなかったので見てください。インターフェイス）
 
 # 無名クラス
-Buttonの
+## 無名クラスとは
+ButtonのsetOnClickListenerは変な形をしてね？と思ったと思います。これは**無名(匿名)クラス**というものです。無名クラスはjavaにおける特殊なクラスの一つで、クラス名がなく、あるメソッドの中で宣言され、そこでしか使われないという特徴があります。
+
+大抵、抽象化されたclassやinterfaceを一度だけ具体的に使いたいときに使います。以下のように書くことでその場限りで動作するメソッドのようにふるまいます。
 
 ```java
+    new 親クラスまたはインターフェイス名() {
+        // 匿名クラスの内容 (フィールドやメソッドの定義)
+    };
+```
+
+
+それでは実際にButtonのsetOnClickListenerを見てみましょう。
+
+```java
+
         Button button = findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener(){
+        // 1
+        button.setOnClickListener(
+            // 2 (これが無名クラス)
+            new View.OnClickListener(){
             @Override
             public void onClick(View v)
             {
                 // 中身
             }
+
         });
 ```
+
+1. setOnClickListener()というメソッドの中身を簡単に言うと、Buttonがクリックされていた場合に引数のOnClickListenerというinterfaceを実行するというものです（そのままですね）。
+   
+2. 下に書いたのがViewクラスの中のOnClickListenerの実装です。このinterfaceは中のonClick()というメソッドを実行していたというわけです。上のコードでは、OnClickListenerを継承し、overrideしたメソッドを記述していたわけです。
+   
+   
+そして、1と2の合わせ技で、onClick()の中に書いてある処理がButtonをクリックしたときに実行されていたというわけです。
+
+
+```java
+    /**
+     * Interface definition for a callback to be invoked when a view is clicked.
+     */
+    public interface OnClickListener {
+        /**
+         * Called when a view has been clicked.
+         *
+         * @param v The view that was clicked.
+         */
+        void onClick(View v);
+    }
+```
+
+## 無名クラス内にローカル変数を渡すとき
 
 # Context
 
