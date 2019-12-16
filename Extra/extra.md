@@ -8,7 +8,7 @@ class自体についてはなんか説明するよりも慣れてください（
 ### 静的フィールド
 フィールドとはクラス自体が持っている情報（変数）のことです。簡単に言えば、クラス内にあってメソッドの外に書いてある変数のことです。下のclassをインスタンス化した場合、インスタンスごとに異なるデータが保存されます。
 
-```java:main.java(一部)
+```java
 public class Person(){
     int HP;
     String  sex;
@@ -18,18 +18,18 @@ public class Person(){
 
 仮にこのPersonのインスタンス全てのHPに同じ値を入れたい場合には、staticを使うことで共通の値を保持させることができます。
 
-```java:main.java(一部)
+```java
     static int HP;
 ```
 
 このHPにアクセスする場合、インスタンス化した名前を使わなくてもアクセスすることができます（上の場合Person.HP）。ていうかこの方法でアクセスするのが習わしというかそんな感じです。
 
-Javaでは、Math.PIがあります。
+例えばJavaではMath.PIがあります。
 
 ### 静的メソッド
 メソッドもstaticをつけることで静的にすることができます。
 
-```java:main.java(一部)
+```java
 public class Person(){
     
     static int getUnko(){
@@ -41,7 +41,7 @@ public class Person(){
 
 静的フィールドと同様にインスタンス化した名前を使わなくても使用することができます。（上の場合Person.getUnko()）。
 
-例えばJavaでは、Math.log()があります。
+例えばJavaではMath.log()があります。
 
 ## アクセス制御
 他のクラスからアクセスを制御したい時にはアクセス修飾子を使います。フィールドとメソッドにつけられる修飾子は以下の4つです。
@@ -57,14 +57,17 @@ publicにしていないclassは他のclassからは存在そのものが隠さ�
 [![Image from Gyazo](https://i.gyazo.com/33f6d3019be3a240c7a7b6d39b1e2274.jpg)](https://gyazo.com/33f6d3019be3a240c7a7b6d39b1e2274)
 
 
-```java:main.java(一部)
+```java
 public class Person(){
+
     private int HP;
     private String sex;
     private String name;
     
-    private Person(){
-
+    private void Person(String name){
+        // 左辺のthis.nameはフィールドのname
+        // 右辺のnameはメソッドの引数のname
+        this.name = name;
     }
 
     public void showName(){
@@ -72,15 +75,16 @@ public class Person(){
     }
 
     // getter
+    // 値を読み込むためのメソッド
     public String getName(){
         return name;
     }
 
     // setter
+    // 値を書き込むためのメソッド
     public void setName(String name){
         this.name = name;
     }
-    ...
 }
 ```
 
@@ -92,7 +96,7 @@ public class Person(){
 という風にします（まあ好みです）。
 
 ## 継承
-実はAndroidのコードを書いてる間はこれをしていました。では見ていきましょう。
+実はAndroidのコードを書いてる間はこれを使っていました。では見ていきましょう。
 
 ### 継承とは
 似たような機能を持つclassを作るときに別々のclassとして実装しようとすると、全く同じメソッドやフィールドが存在していて書くのがだるくなってきます。そこで共通するフィールドやメソッドを記述して新しいclassを作ることができます。
@@ -118,6 +122,8 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
+## 継承の使い方と注意
+
 ここで行っていることを順に説明します。
 
 1. classの継承元を**スーパークラス**、継承先を**サブクラス**といいます。サブクラスは複数存在できますが、スーパークラスは複数しか存在できません。サブクラスを作る際にはクラス名の横に**extends スーパークラス名**という風に記述します。
@@ -139,9 +145,50 @@ public class MainActivity extends AppCompatActivity {
 
 4. サブクラスのインスタンスにはスーパークラスのインスタンスが内包されています。簡単に言えば、サブクラスで記述しなくてもスーパークラスのメソッドやフィールドは勝手に動いています。
    
-   例えば、戻るボタンを押したときの挙動を記述するonBackPressedというメソッドはMainActivityで書いていなくても押したときに反応します。
-
-   ss
-   
+   例えば、戻るボタンを押したときの挙動を記述するonBackPressed()というメソッドはMainActivityで書いていなくても押したときに反応します。
 
 [![Image from Gyazo](https://i.gyazo.com/76448f3f90c63f5f163eb45fc6c41725.jpg)](https://gyazo.com/76448f3f90c63f5f163eb45fc6c41725)
+
+また、継承の原則として、**サブクラスになればなるほど具体的に、スーパークラスであればあるほど抽象的になるように記述するようにしましょう。**
+
+## 継承とオーバーライドの禁止
+**final修飾子**は、それ自体が最後であることを示します。
+
+- final変数  
+  再代入できない変数として使います。
+
+
+- finalフィールド  
+  初期値のまま変更できないフィールドになります。要するに定数を定義できます。
+
+
+- finalメソッド  
+  サブクラスでオーバーライド出来なくなります。
+
+
+- finalクラス  
+  そのクラスを継承することができなくなります。
+
+## 継承の応用
+参考になる資料のpdfをつけておいたので知りたい方は読んでみてください。（著作権とかいろいろあるので他の人には回さないでください。下の参考文献の六章の内容です）
+（すみませんがインターフェイスについての解説を書く暇がなかったので見てください。インターフェイス）
+
+# 無名クラス
+Buttonの
+
+```java
+        Button button = findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v)
+            {
+                // 中身
+            }
+        });
+```
+
+# Context
+
+
+# 参考文献
+- 「新入社員のためのJAVAプログラミングテキスト　オブジェクト指向編」
