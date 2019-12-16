@@ -82,7 +82,7 @@ intent間で変数の値を渡すことが可能です。
 
 ```java:main.java(一部)
     // URLの文字列からURIオブジェクトを生成
-    Url uri = URI.parse("http://watatentv.com/");
+    Uri uri = Uri.parse("http://watatentv.com/");
     // アクションを設定
     String action - "android.intent.action.VIEW";
     // 暗黙的intentの生成
@@ -94,3 +94,4 @@ intent間で変数の値を渡すことが可能です。
 ## 課題
 1. 前回製作した占いアプリの占い結果を遷移先で表示してください
 2. クイズを出して遷移先で正解不正解を出す→戻るボタンで戻るアプリを作ってください
+3. 遷移回数をカウントするアプリを作ってください。
