@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             // cntは情報数
             // cntが多ければ多いほど、指定した座標から近い順に地点情報を取得
+            // AsyncHttpRequestのインスタンスを作成し、execute()でAsyncTaskを開始する
             new AsyncHttpRequest(this).execute(new URL("https://api.openweathermap.org/data/2.5/find?lat=" + lat + "&lon=" + lon + "&cnt=1"));
         } catch (MalformedURLException e) {
             e.printStackTrace();
